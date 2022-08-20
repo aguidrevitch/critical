@@ -1,12 +1,12 @@
 {
   "name": "@aguidrevitch/critical",
-  "version": "4.0.1-spo-1",
+  "version": "4.0.1-spo-2",
   "description": "Extract & Inline Critical-path CSS from HTML",
   "author": "Addy Osmani",
   "license": "Apache-2.0",
   "repository": "https://github.com/aguidrevitch/critical",
   "publishConfig": {
-    "registry":"https://npm.pkg.github.com"
+    "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
     "jest": "jest --coverage",
@@ -29,6 +29,7 @@
     "node": "^10 || ^12 || >=14"
   },
   "dependencies": {
+    "@aguidrevitch/penthouse": "github:aguidrevitch/penthouse",
     "chalk": "^4.1.0",
     "clean-css": "^5.1.2",
     "common-tags": "^1.8.0",
@@ -49,7 +50,6 @@
     "meow": "^9.0.0",
     "oust": "^1.2.0",
     "p-all": "^3.0.0",
-    "penthouse": "github:aguidrevitch/penthouse",
     "plugin-error": "^1.0.1",
     "postcss": "^8.3.0",
     "postcss-discard": "^2.0.0",
