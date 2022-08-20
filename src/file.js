@@ -31,6 +31,8 @@ const unlinkAsync = promisify(fs.unlink);
 const readFileAsync = promisify(fs.readFile);
 const writeFileAsync = promisify(fs.writeFile);
 
+const cache = {};
+
 async function outputFileAsync(file, data) {
   const dir = path.dirname(file);
 
@@ -323,6 +325,10 @@ async function fetch(uri, options = {}, secure = true) {
   let resourceUrl = uri;
   let protocolRelative = false;
 
+  if (cache[method + ':' + uri]) {
+    return cache[method + ':' + uri];
+  }
+
   // Consider protocol-relative urls
   if (/^\/\//.test(uri)) {
     protocolRelative = true;
@@ -343,6 +349,7 @@ async function fetch(uri, options = {}, secure = true) {
   try {
     const response = await got(resourceUrl, {...requestOptions, headers});
     if (method === 'head') {
+      cache[method + ':' + uri] = response;
       return response;
     }
 
@@ -351,17 +358,22 @@ async function fetch(uri, options = {}, secure = true) {
     // Try again with http
     if (secure && protocolRelative) {
       debug(`${error.message} - trying again over http`);
-      return fetch(uri, options, false);
+      const response = await fetch(uri, options, false);
+      cache[method + ':' + uri] = response;
+      return response;
     }
 
     debug(`${resourceUrl} failed: ${error.message}`);
 
     if (method === 'head') {
+      cache[method + ':' + uri] = error.response;
       return error.response;
     }
 
     if (error.response) {
-      return Buffer.from(error.response.body || '');
+      const result = Buffer.from(error.response.body || '');
+      cache[method + ':' + uri] = result;
+      return result;
     }
 
     throw error;

@@ -1394,14 +1394,14 @@ describe('generate (remote)', () => {
     const mockGet = jest.fn();
     const mockHead = jest.fn();
     nock(`http://localhost:${port}`, {allowUnmocked: true})
-      .intercept('/styles/adaptive.css', 'GET')
+      .intercept('/styles/adaptive-uncached.css', 'GET')
       .reply(200, mockGet)
-      .intercept('/styles/adaptive.css', 'HEAD')
+      .intercept('/styles/adaptive-uncached.css', 'HEAD')
       .reply(200, mockHead);
 
     await generate({
       base: FIXTURES_DIR,
-      src: `http://localhost:${port}/generate-adaptive.html`,
+      src: `http://localhost:${port}/generate-adaptive-uncached.html`,
       width: 1300,
       height: 900,
       request: {method: 'get'},
@@ -1412,7 +1412,7 @@ describe('generate (remote)', () => {
 
     await generate({
       base: FIXTURES_DIR,
-      src: `http://localhost:${port}/generate-adaptive.html`,
+      src: `http://localhost:${port}/generate-adaptive-uncached.html`,
       width: 1300,
       height: 900,
     });
