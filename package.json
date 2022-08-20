@@ -1,6 +1,6 @@
 {
   "name": "@aguidrevitch/critical",
-  "version": "4.0.1.1",
+  "version": "4.0.1-cached",
   "description": "Extract & Inline Critical-path CSS from HTML",
   "author": "Addy Osmani",
   "license": "Apache-2.0",
