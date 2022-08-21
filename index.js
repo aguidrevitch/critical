@@ -6,9 +6,9 @@ const path = require('path');
 const through2 = require('through2');
 const PluginError = require('plugin-error');
 const replaceExtension = require('replace-ext');
-const {create} = require('./src/core');
-const {outputFileAsync} = require('./src/file');
-const {getOptions} = require('./src/config');
+const {create} = require('./src/core.js');
+const {outputFileAsync} = require('./src/file.js');
+const {getOptions} = require('./src/config.js');
 
 /**
  * Critical path CSS generation

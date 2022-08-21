@@ -9,8 +9,8 @@ const PluginError = require('plugin-error');
 const nn = require('normalize-newline');
 const streamAssert = require('stream-assert');
 const tempy = require('tempy');
-const {ConfigError, FileNotFoundError, NoCssError} = require('../src/errors');
-const {getVinyl, readAndRemove, read} = require('./helper');
+const {ConfigError, FileNotFoundError, NoCssError} = require('../src/errors.js');
+const {getVinyl, readAndRemove, read} = require('./helper/index.js');
 const {generate, stream} = require('..');
 
 jest.setTimeout(20000);

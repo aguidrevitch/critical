@@ -12,7 +12,7 @@ const reduce = require('lodash/reduce');
 const isString = require('lodash/isString');
 const isObject = require('lodash/isObject');
 const escapeRegExp = require('lodash/escapeRegExp');
-const {validate} = require('./src/config');
+const {validate} = require('./src/config.js');
 const critical = require('.');
 
 const help = `

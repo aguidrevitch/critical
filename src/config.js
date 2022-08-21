@@ -2,7 +2,7 @@
 
 const Joi = require('joi');
 const debug = require('debug')('critical:config');
-const {ConfigError} = require('./errors');
+const {ConfigError} = require('./errors.js');
 
 const DEFAULT = {
   width: 1300,

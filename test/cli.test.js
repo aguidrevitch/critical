@@ -6,7 +6,7 @@ const {promisify} = require('util');
 const nn = require('normalize-newline');
 const globby = require('globby');
 const {version, bin} = require('../package.json');
-const {read} = require('./helper');
+const {read} = require('./helper/index.js');
 
 const criticalBin = path.join(__dirname, '..', bin);
 
@@ -27,7 +27,7 @@ const getArgs = async (params = []) => {
   critical.generate = jest.fn();
   process.argv = ['node', criticalBin, ...params];
 
-  require('../cli'); // eslint-disable-line import/no-unassigned-import
+  require('../cli.js'); // eslint-disable-line import/no-unassigned-import
   process.argv = origArgv;
   const [args] = critical.generate.mock.calls;
   const [opts] = args || [{}];

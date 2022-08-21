@@ -10,7 +10,7 @@ const fs = require('fs');
 const finalhandler = require('finalhandler');
 const serveStatic = require('serve-static');
 const nn = require('normalize-newline');
-const {read, readAndRemove} = require('./helper');
+const {read, readAndRemove} = require('./helper/index.js');
 const {generate} = require('..');
 
 jest.setTimeout(100000);

@@ -11,13 +11,13 @@ const postcss = require('postcss');
 const discard = require('postcss-discard');
 const imageInliner = require('postcss-image-inliner');
 const penthouse = require('@aguidrevitch/penthouse');
-const {PAGE_UNLOADED_DURING_EXECUTION_ERROR_MESSAGE} = require('@aguidrevitch/penthouse/lib/core');
+const {PAGE_UNLOADED_DURING_EXECUTION_ERROR_MESSAGE} = require('@aguidrevitch/penthouse/lib/core.js');
 const inlineCritical = require('inline-critical');
 const {removeDuplicateStyles} = require('inline-critical/src/css');
 const parseCssUrls = require('css-url-parser');
-const {reduceAsync} = require('./array');
-const {NoCssError} = require('./errors');
-const {getDocument, getDocumentFromSource, token, getAssetPaths, isRemote, normalizePath} = require('./file');
+const {reduceAsync} = require('./array.js');
+const {NoCssError} = require('./errors.js');
+const {getDocument, getDocumentFromSource, token, getAssetPaths, isRemote, normalizePath} = require('./file.js');
 
 /**
  * Returns a string of combined and deduped css rules.

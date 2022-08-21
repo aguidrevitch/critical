@@ -20,8 +20,8 @@ const parseCssUrls = require('css-url-parser');
 const tempy = require('tempy');
 const slash = require('slash');
 const debug = require('debug')('critical:file');
-const {mapAsync, filterAsync, reduceAsync, forEachAsync} = require('./array');
-const {FileNotFoundError} = require('./errors');
+const {mapAsync, filterAsync, reduceAsync, forEachAsync} = require('./array.js');
+const {FileNotFoundError} = require('./errors.js');
 
 const BASE_WARNING = `${chalk.yellow('Warning:')} Missing base path. Consider 'base' option. https://goo.gl/PwvFVb`;
 

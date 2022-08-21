@@ -10,8 +10,8 @@ const fs = require('fs');
 const Vinyl = require('vinyl');
 const finalhandler = require('finalhandler');
 const serveStatic = require('serve-static');
-const {mapAsync} = require('../src/array');
-const {FileNotFoundError} = require('../src/errors');
+const {mapAsync} = require('../src/array.js');
+const {FileNotFoundError} = require('../src/errors.js');
 const {
   BASE_WARNING,
   isRemote,
@@ -28,8 +28,8 @@ const {
   getDocument,
   getDocumentFromSource,
   getStylesheet,
-} = require('../src/file');
-const {read, strip} = require('./helper');
+} = require('../src/file.js');
+const {read, strip} = require('./helper/index.js');
 
 const readFileAsync = promisify(fs.readFile);
 

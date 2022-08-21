@@ -5,8 +5,8 @@ const {createServer} = require('http');
 const getPort = require('get-port');
 const finalhandler = require('finalhandler');
 const serveStatic = require('serve-static');
-const {create} = require('../src/core');
-const {read} = require('./helper');
+const {create} = require('../src/core.js');
+const {read} = require('./helper/index.js');
 
 jest.setTimeout(20000);
 
