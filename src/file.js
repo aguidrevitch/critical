@@ -396,12 +396,24 @@ function getStylesheetObjects(file) {
 
   const stylesheets = oust.raw(file.contents.toString(), ['stylesheets', 'preload', 'styles']);
 
+  /**
+   * Tests if file has .css extension or has no extension
+   * @param {link} oust link object
+   * @returns {[boolean]} is css
+   */
+  const isCSSFile = (link) =>
+    link.type === 'styles' ||
+    link.value.startsWith('data:') ||
+    new RegExp(/(\.css$|\.css\?)/i).test(link.value) ||
+    !new RegExp(/(\.\w+$|\.\w+\?)/i).test(link.value);
+
   const isNotPrint = (el) =>
     el.attr('media') !== 'print' || (Boolean(el.attr('onload')) && el.attr('onload').includes('media'));
 
   const isMediaQuery = (media) => typeof media === 'string' && !['all', 'print', 'screen'].includes(media);
 
   const objects = stylesheets
+    .filter((link) => isCSSFile(link))
     .filter((link) => isNotPrint(link.$el) && Boolean(link.value))
     .map((link) => {
       const media = isMediaQuery(link.$el.attr('media')) ? link.$el.attr('media') : '';

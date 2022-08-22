@@ -511,6 +511,18 @@ test('Get styles', async () => {
   }
 });
 
+test('Get preloads', async () => {
+  const docs = await mapAsync(
+    [`http://localhost:${port}/generate-preload.html`, path.join(__dirname, 'fixtures/folder/generate-preload.html')],
+    (filepath) => getDocument(filepath)
+  );
+
+  // console.log(docs);
+  for (const document of docs) {
+    expect(document.css.toString()).toMatch('images/critical-noextension.png');
+  }
+});
+
 test('Get inline styles', async () => {
   const docs = await mapAsync(
     [
