@@ -11,7 +11,7 @@
   "scripts": {
     "jest": "jest --coverage",
     "xo": "xo",
-    "test": "npm run jest --runInBand"
+    "test": "npm run xo && npm run jest --runInBand"
   },
   "files": [
     "cli.js",
